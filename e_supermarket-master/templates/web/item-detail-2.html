@@ -1,0 +1,397 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% block top-content %}
+    <!-- Modal -->
+    <!-- <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">              
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>       
+                <div class="modal-body">
+                    <div class="deal" style="background-image: url('{% static 'web' %}/imgs/banner/menu-banner-7.png')">
+                        <div class="deal-top">
+                            <h2 class="text-brand">Deal of the Day</h2>
+                            <h5>Limited quantities.</h5>
+                        </div>
+                        <div class="deal-content">
+                            <h6 class="product-title"><a href="shop-product-right.html">Summer Collection New Morden Design</a></h6>
+                            <div class="product-price"><span class="new-price">&#8377;139.00</span><span class="old-price">&#8377;160.99</span></div>
+                        </div>
+                        <div class="deal-bottom">
+                            <p>Hurry Up! Offer End In:</p>
+                            <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"><span class="countdown-section"><span class="countdown-amount hover-up">03</span><span class="countdown-period"> days </span></span><span class="countdown-section"><span class="countdown-amount hover-up">02</span><span class="countdown-period"> hours </span></span><span class="countdown-section"><span class="countdown-amount hover-up">43</span><span class="countdown-period"> mins </span></span><span class="countdown-section"><span class="countdown-amount hover-up">29</span><span class="countdown-period"> sec </span></span></div>
+                            <a href="shop-grid-right.html" class="btn hover-up">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>        
+        </div>
+        </div>
+    </div> -->
+
+{% endblock top-content %}
+
+<!-- Quick view -->
+{% block main-content %}
+    
+    <main class="main">       
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="{% url 'web:index' %}" rel="nofollow">Home</a>
+                    <span></span> <a href="{% url 'web:items' pk=item.category.pk %}" rel="nofollow">Items</a>
+                    <span></span> Item Detail
+                </div>
+            </div>
+        </div>
+        <section class="mt-50 mb-50">
+            <div class="container">
+                <div class="row flex-row-reverse">
+                    <div class="col-lg-12">
+                        <div class="product-detail accordion-detail">
+                            <div class="row mb-50">
+                                <!-- <div class="col-md-6 col-sm-12 col-xs-12">
+                                    <div class="detail-gallery">
+                                        <span class="zoom-icon"><i class="fi-rs-search"></i></span> -->
+                                        <!-- MAIN SLIDES -->
+                                        <!-- <div class="product-image-slider">
+                                            <figure class="border-radius-10">
+                                                <img src="{% static 'web/imgs/shop/product-16-2.jpg' %}" alt="product image">
+                                            </figure>
+                                            <figure class="border-radius-10">
+                                                <img src="{% static 'web/imgs/shop/product-16-1.jpg' %}" alt="product image">
+                                            </figure>
+                                            <figure class="border-radius-10">
+                                                <img src="{% static 'web/imgs/shop/product-16-3.jpg' %}" alt="product image">
+                                            </figure>
+                                            <figure class="border-radius-10">
+                                                <img src="{% static 'web/imgs/shop/product-16-4.jpg' %}" alt="product image">
+                                            </figure>
+                                            <figure class="border-radius-10">
+                                                <img src="{% static 'web/imgs/shop/product-16-5.jpg' %}" alt="product image">
+                                            </figure>
+                                            <figure class="border-radius-10">
+                                                <img src="{% static 'web/imgs/shop/product-16-6.jpg' %}" alt="product image">
+                                            </figure>
+                                            <figure class="border-radius-10">
+                                                <img src="{% static 'web/imgs/shop/product-16-7.jpg' %}" alt="product image">
+                                            </figure>
+                                        </div> -->
+                                        <!-- THUMBNAILS -->
+                                        <!-- <div class="slider-nav-thumbnails pl-15 pr-15">
+                                            <div><img src="{% static 'web/imgs/shop/thumbnail-3.jpg' %}" alt="product image"></div>
+                                            <div><img src="{% static 'web/imgs/shop/thumbnail-4.jpg' %}" alt="product image"></div>
+                                            <div><img src="{% static 'web/imgs/shop/thumbnail-5.jpg' %}" alt="product image"></div>
+                                            <div><img src="{% static 'web/imgs/shop/thumbnail-6.jpg' %}" alt="product image"></div>
+                                            <div><img src="{% static 'web/imgs/shop/thumbnail-7.jpg' %}" alt="product image"></div>
+                                            <div><img src="{% static 'web/imgs/shop/thumbnail-8.jpg' %}" alt="product image"></div>
+                                            <div><img src="{% static 'web/imgs/shop/thumbnail-9.jpg' %}" alt="product image"></div>
+                                        </div>
+                                    </div> -->
+                                    <!-- End Gallery -->
+                                    <!-- <div class="social-icons single-share">
+                                        <ul class="text-grey-5 d-inline-block">
+                                            <li><strong class="mr-10">Share this:</strong></li>
+                                            <li class="social-facebook"><a href="#"><img src="{% static 'web/imgs/theme/icons/icon-facebook.svg' %}" alt=""></a></li>
+                                            <li class="social-twitter"> <a href="#"><img src="{% static 'web/imgs/theme/icons/icon-twitter.svg' %}" alt=""></a></li>
+                                            <li class="social-instagram"><a href="#"><img src="{% static 'web/imgs/theme/icons/icon-instagram.svg' %}" alt=""></a></li>
+                                            <li class="social-linkedin"><a href="#"><img src="{% static 'web/imgs/theme/icons/icon-pinterest.svg' %}" alt=""></a></li>
+                                        </ul>
+                                    </div>
+                                </div> -->
+                                <div class="col-lg-5 col-md-6 col-sm-12">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-content-wrap mt-15 mb-0">
+                                            <h2>{{ default_variant.full_name }}</h2>
+                                        </div>
+                                        <div class="product-img-action-wrap" style="max-height: 700px;">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-right.html">
+                                                    <img class="default-img" src="{{ item.get_featured_image }}" alt="">
+                                                    <img class="hover-img" src="{{ item.get_image }}" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                    <div class="detail-info">
+                                        <h2 class="title-detail">{{ item.name }}</h2>
+                                        <div class="product-detail-rating">
+                                            <div class="pro-details-brand">
+                                                <span> Category: {{ item.category.name }}</span>
+                                            </div>
+                                            <div class="product-rate-cover text-end">
+                                                <div class="product-rate d-inline-block">
+                                                    <div class="product-rating" style="width:90%">
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="clearfix product-price-cover">
+                                            <div class="product-price primary-color float-left">
+                                                <ins><span class="text-brand">&#8377;{{default_variant.price}}</span></ins>
+                                                <ins><span class="old-price font-md ml-15">&#8377;{{default_variant.mrp}}</span></ins>
+                                                <span class="save-price  font-md color3 ml-15">25% Off</span>
+                                            </div>
+                                        </div>
+                                        <div class="bt-1 border-color-1 mt-15 mb-15"></div>
+                                        <div class="short-desc mb-30">
+                                            <p>{{item.description}}
+                                                <!-- Lorem ipsum dolor, 
+                                                sit amet consectetur adipisicing elit. Aliquam rem officia, corrupti reiciendis minima nisi modi, quasi, 
+                                                odio minus dolore impedit fuga eum eligendi? Officia doloremque facere quia. Voluptatum, accusantium! -->
+                                            </p>
+                                        </div>
+                                        <div class="product_sort_info font-xs mb-30">
+                                            <ul>
+                                                <li class="mb-10"><i class="fi-rs-crown mr-5"></i> 1 Year AL Jazeera Brand Warranty</li>
+                                                <li class="mb-10"><i class="fi-rs-refresh mr-5"></i> 30 Day Return Policy</li>
+                                                <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available</li>
+                                            </ul>
+                                        </div>
+                                        <!-- <div class="attr-detail attr-color mb-15">
+                                            <strong class="mr-10">Color</strong>
+                                            <ul class="list-filter color-filter">
+                                                <li><a href="#" data-color="Red"><span class="product-color-red"></span></a></li>
+                                                <li><a href="#" data-color="Yellow"><span class="product-color-yellow"></span></a></li>
+                                                <li class="active"><a href="#" data-color="White"><span class="product-color-white"></span></a></li>
+                                                <li><a href="#" data-color="Orange"><span class="product-color-orange"></span></a></li>
+                                                <li><a href="#" data-color="Cyan"><span class="product-color-cyan"></span></a></li>
+                                                <li><a href="#" data-color="Green"><span class="product-color-green"></span></a></li>
+                                                <li><a href="#" data-color="Purple"><span class="product-color-purple"></span></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="attr-detail attr-size">
+                                            <strong class="mr-10">Size</strong>
+                                            <ul class="list-filter size-filter font-small">
+                                                <li><a href="#">S</a></li>
+                                                <li class="active"><a href="#">M</a></li>
+                                                <li><a href="#">L</a></li>
+                                                <li><a href="#">XL</a></li>
+                                                <li><a href="#">XXL</a></li>
+                                            </ul>
+                                        </div> -->
+                                        {% if variants.count >= 2 %}
+                                            <div class="custom-select" style="width:200px;">
+                                                <select>
+                                                    {% for variant in variants %}
+                                                        <option value="{{forloop.counter}}" 
+                                                            data-link="{% url 'web:item_details' pk=item.pk%}?variant={{variant.pk}}" {% if variant.pk == default_variant.pk %}selected{% endif %}>
+                                                            {{variant.title}}
+                                                        </option>
+                                                    {% endfor %}
+                                                    <!-- <option>Audi</option>
+                                                    <option>BMW</option>
+                                                    <option>Citroen</option>
+                                                    <option>Ford</option>
+                                                    <option>Honda</option>
+                                                    <option>Jaguar</option>
+                                                    <option>Land Rover</option>
+                                                    <option>Mercedes</option>
+                                                    <option>Mini</option>
+                                                    <option>Nissan</option>
+                                                    <option>Toyota</option>
+                                                    <option>Volvo</option> -->
+                                                </select>
+                                            </div>
+                                        {% endif %}
+                                        <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                                        <div class="detail-extralink">
+                                            <div class="detail-qty border radius">
+                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                                <span class="qty-val">1</span>
+                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                            </div>
+                                            <div class="product-extra-link2">
+                                                {% if item.default_variant.pk in cart_items_pk %}
+                                                    <button aria-label="Exist in Cart" class="button button-add-to-cart">Item Exist in Cart</button>
+                                                {% else %}
+                                                    <button aria-label="Exist in Cart" class="button button-add-to-cart exist-button">Item Exist in Cart</button>
+                                                    <button aria-label="Add To Cart" type="submit" data-qty="1" data-url="{% url 'web:add_to_cart' pk=item.default_variant.pk %}" class="button button-add-to-cart add-item-cart">Add to cart</button>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <ul class="product-meta font-xs color-grey mt-50">
+                                            <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
+                                            <li class="mb-5">Tags: <a href="#" rel="tag">Cloth</a>, <a href="#" rel="tag">Women</a>, <a href="#" rel="tag">Dress</a> </li>
+                                            <li>Availability:<span class="in-stock text-success ml-5">{{default_variant.stock}} Items In Stock</span></li>
+                                        </ul>
+                                    </div>
+                                    <!-- Detail Info -->
+                                </div>
+                            </div>
+                            <!-- <div class="tab-style3">
+                                <ul class="nav nav-tabs text-uppercase">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Additional-info">Additional info</a>
+                                    </li>
+                                
+                                </ul>
+                                <div class="tab-content shop_info_tab entry-main-content">
+                                    <div class="tab-pane fade show active" id="Description">
+                                        <div class="">
+                                            <p>Uninhibited carnally hired played in whimpered dear gorilla koala depending and much yikes off far quetzal goodness and from for grimaced goodness unaccountably and meadowlark near unblushingly crucial scallop
+                                                tightly neurotic hungrily some and dear furiously this apart.</p>
+                                            <p>Spluttered narrowly yikes left moth in yikes bowed this that grizzly much hello on spoon-fed that alas rethought much decently richly and wow against the frequent fluidly at formidable acceptably flapped
+                                                besides and much circa far over the bucolically hey precarious goldfinch mastodon goodness gnashed a jellyfish and one however because.
+                                            </p>
+                                            <ul class="product-more-infor mt-30">
+                                                <li><span>Type Of Packing</span> Bottle</li>
+                                                <li><span>Color</span> Green, Pink, Powder Blue, Purple</li>
+                                                <li><span>Quantity Per Case</span> 100ml</li>
+                                                <li><span>Ethyl Alcohol</span> 70%</li>
+                                                <li><span>Piece In One</span> Carton</li>
+                                            </ul>
+                                            <hr class="wp-block-separator is-style-dots">
+                                            <p>Laconic overheard dear woodchuck wow this outrageously taut beaver hey hello far meadowlark imitatively egregiously hugged that yikes minimally unanimous pouted flirtatiously as beaver beheld above forward
+                                                energetic across this jeepers beneficently cockily less a the raucously that magic upheld far so the this where crud then below after jeez enchanting drunkenly more much wow callously irrespective limpet.</p>
+                                            <h4 class="mt-30">Packaging & Delivery</h4>
+                                            <hr class="wp-block-separator is-style-wide">
+                                            <p>Less lion goodness that euphemistically robin expeditiously bluebird smugly scratched far while thus cackled sheepishly rigid after due one assenting regarding censorious while occasional or this more crane
+                                                went more as this less much amid overhung anathematic because much held one exuberantly sheep goodness so where rat wry well concomitantly.
+                                            </p>
+                                            <p>Scallop or far crud plain remarkably far by thus far iguana lewd precociously and and less rattlesnake contrary caustic wow this near alas and next and pled the yikes articulate about as less cackled dalmatian
+                                                in much less well jeering for the thanks blindly sentimental whimpered less across objectively fanciful grimaced wildly some wow and rose jeepers outgrew lugubrious luridly irrationally attractively
+                                                dachshund.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="Additional-info">
+                                        <table class="font-md">
+                                            <tbody>
+                                                <tr class="stand-up">
+                                                    <th>Stand Up</th>
+                                                    <td>
+                                                        <p>35″L x 24″W x 37-45″H(front to back wheel)</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="folded-wo-wheels">
+                                                    <th>Folded (w/o wheels)</th>
+                                                    <td>
+                                                        <p>32.5″L x 18.5″W x 16.5″H</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="folded-w-wheels">
+                                                    <th>Folded (w/ wheels)</th>
+                                                    <td>
+                                                        <p>32.5″L x 24″W x 18.5″H</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="door-pass-through">
+                                                    <th>Door Pass Through</th>
+                                                    <td>
+                                                        <p>24</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="frame">
+                                                    <th>Frame</th>
+                                                    <td>
+                                                        <p>Aluminum</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="weight-wo-wheels">
+                                                    <th>Weight (w/o wheels)</th>
+                                                    <td>
+                                                        <p>20 LBS</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="weight-capacity">
+                                                    <th>Weight Capacity</th>
+                                                    <td>
+                                                        <p>60 LBS</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="width">
+                                                    <th>Width</th>
+                                                    <td>
+                                                        <p>24″</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="handle-height-ground-to-handle">
+                                                    <th>Handle height (ground to handle)</th>
+                                                    <td>
+                                                        <p>37-45″</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="wheels">
+                                                    <th>Wheels</th>
+                                                    <td>
+                                                        <p>12″ air / wide track slick tread</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="seat-back-height">
+                                                    <th>Seat back height</th>
+                                                    <td>
+                                                        <p>21.5″</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="head-room-inside-canopy">
+                                                    <th>Head room (inside canopy)</th>
+                                                    <td>
+                                                        <p>25″</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="pa_color">
+                                                    <th>Color</th>
+                                                    <td>
+                                                        <p>Black, Blue, Red, White</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="pa_size">
+                                                    <th>Size</th>
+                                                    <td>
+                                                        <p>M, S</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock main-content %}
+{% block extra-script %}
+    <script>
+        // Qty Up-Down
+        $('.detail-qty').each(function () {
+            var qtyval = parseInt($(this).find('.qty-val').text(), 10);
+            $('.qty-up').on('click', function (event) {
+                event.preventDefault();
+                qtyval = qtyval + 1;
+                $(this).prev().text(qtyval);
+                $('.add-item-cart').attr("data-qty",qtyval);
+            });
+            $('.qty-down').on('click', function (event) {
+                event.preventDefault();
+                qtyval = qtyval - 1;
+                if (qtyval > 1) {
+                    $(this).next().text(qtyval);
+                } else {
+                    qtyval = 1;
+                    $(this).next().text(qtyval);
+                }
+                $('.add-item-cart').attr("data-qty",qtyval);
+            });
+        });
+    </script>
+    
+    <script>
+        $('select').change(function() {
+            //Use $option (with the "$") to see that the variable is a jQuery object
+            var $option = $(this).find('option:selected');
+            //Added with the EDIT
+            var link = $option.attr("data-link");//to get content of "link" attrib
+            window.location.href = link
+        });
+    </script>
+{% endblock extra-script %}

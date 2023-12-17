@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{% if shop_details.shop_name %}{{shop_details.shop_name}}{% else %}Evara{% endif %} Dashboard</title>
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="">
+<meta property="og:type" content="">
+<meta property="og:url" content="">
+<meta property="og:image" content="">
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'imgs/theme/favicon.svg' %}">
+<!-- Template CSS -->
+{% if is_need_popup_box %}
+    <link href="{% static 'sweet-alert/sweet-alert.css' %}" rel="stylesheet">
+    <!-- alert/popup boxes -->
+{% endif %}
+<link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    {% block content %}
+
+    {% endblock content %}
+    
+    <script src="{% static 'js/vendors/jquery-3.6.0.min.js' %}"></script> 
+    <script src="{% static 'js/vendors/bootstrap.bundle.min.js' %}"></script> 
+    <!-- <script src="{% static 'js/vendors/select2.min.js' %}"></script>  -->
+    <script src="{% static 'js/vendors/perfect-scrollbar.js' %}"></script> 
+    <script src="{% static 'js/vendors/jquery.fullscreen.min.js' %}"></script> 
+    <script src="{% static 'js/vendors/chart.js' %}"></script> 
+    <!-- Main Script --> 
+    <script src="{% static 'js/main.js' %}" type="text/javascript"></script> 
+    <script src="{% static 'js/custom-chart.js' %}" type="text/javascript"></script>
+    {% if is_need_popup_box %}
+        <script src="{% static 'js/actions.js' %}"></script>
+        <script src="{% static 'sweet-alert/sweet-alert.min.js' %}"></script>
+    {% endif %}
+    {% block static %}
+
+    {% endblock static %}
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <section class="content-main mt-80 mb-80">
+              <div class="card mx-auto card-login">
+                  <div class="card-body">
+            <div class="col-8 mx-auto">
+            <img  class="mb-20 justify-content-center d-block align-center" src="{% static 'imgs/theme/logo.svg' %}"/>
+              </div>
+                        <h4 class="card-title mb-4 text-center">Sign in</h4>
+                        {% if form.non_field_errors %}
+                            <div class="palette-Red-500 text m-b-20">	    	
+                                {{form.non_field_errors}}			
+                            </div>
+                            <br />
+                        {% endif %}
+                        <form action="." method="post">
+                            {% csrf_token %} 
+                            <div class="mb-3">
+                                <input class="form-control" placeholder="Username or email" type="text" value="{{ form.username.value|default:''}}" name="username">
+                                {% if form.username.errors %}
+                                    <span class="error">{{ form.username.errors.as_text }}</span>
+                                {% endif %}
+                            </div> <!-- form-group// -->
+                            <div class="mb-3">
+                                <input class="form-control" placeholder="Password" type="password" value="{{ form.password.value|default:''}}" name="password">
+                                {% if form.password.errors %}
+                                    <span class="error">{{ form.password.errors.as_text }}</span>
+                                {% endif %}
+                            </div> <!-- form-group// -->
+                            <input type="hidden" name="next" value="{{ next }}" />
+                            <div class="mb-4">
+                                <button type="submit" class="btn btn-primary w-100"> Login </button>
+                            </div> <!-- form-group// -->
+                        </form>
+                
+                  </div>
+              </div>
+  </section>
+{% include 'includes/footer.html' %}
+{% endblock content %}

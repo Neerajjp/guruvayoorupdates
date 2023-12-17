@@ -1,0 +1,31 @@
+
+# Created by Ali Akbar
+
+.DS_Store
+._*
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
+
+migrations/*.*
+*/migrations/*.*
+*/*/migrations/*.*
+
+!migrations/
+!*/migrations/__init__.py
+
+# DB and Media
+# db.sqlite3
+# db.sqlite3-journal
+# media/
+
+# Environments
+.env
+.venv
+env/
+venv/
+

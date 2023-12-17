@@ -1,0 +1,156 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% block top-content %}
+    <!-- Modal -->
+    <!-- <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">              
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>       
+                <div class="modal-body">
+                    <div class="deal" style="background-image: url('assets/imgs/banner/menu-banner-7.png')">
+                        <div class="deal-top">
+                            <h2 class="text-brand">Deal of the Day</h2>
+                            <h5>Limited quantities.</h5>
+                        </div>
+                        <div class="deal-content">
+                            <h6 class="product-title"><a href="shop-product-right.html">Summer Collection New Morden Design</a></h6>
+                            <div class="product-price"><span class="new-price">&#8377;139.00</span><span class="old-price">&#8377;160.99</span></div>
+                        </div>
+                        <div class="deal-bottom">
+                            <p>Hurry Up! Offer End In:</p>
+                            <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"><span class="countdown-section"><span class="countdown-amount hover-up">03</span><span class="countdown-period"> days </span></span><span class="countdown-section"><span class="countdown-amount hover-up">02</span><span class="countdown-period"> hours </span></span><span class="countdown-section"><span class="countdown-amount hover-up">43</span><span class="countdown-period"> mins </span></span><span class="countdown-section"><span class="countdown-amount hover-up">29</span><span class="countdown-period"> sec </span></span></div>
+                            <a href="shop-grid-right.html" class="btn hover-up">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>        
+        </div>
+        </div>
+    </div> -->
+{% endblock top-content %}
+
+<!-- Quick view -->
+{% block main-content %}
+    <section class="mt-50 mb-50">
+            <div class="container">
+                <div class="order-details">
+                    <div class="order-id">
+                       Order ID : {{instance.order_id}}
+                    </div>
+                    <div class="date">
+                        Date : {{instance.date_added}}
+                    </div>
+                    <div class="status">
+                        Status : {{instance.status}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table class="table shopping-summery text-center clean">
+                                <thead>
+                                    <tr class="main-heading">
+										<th scope="col">#</th>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Variant</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in items %}
+                                        <tr>
+                                            <td>{{forloop.counter}}</td>
+                                            <td class="image product-thumbnail"><img src="{{item.product_variant.product.dashboard_image}}" alt="#"></td>
+                                            <td class="product-des product-name">
+                                                <h5 class="product-name"><a href="shop-product-right.html">{{item.product_variant.product.name}}</a></h5>
+                                            </td>
+                                            <td>
+                                                <h6>{{item.product_variant.title}}</h6>
+                                            </td>
+                                            <td class="price" data-title="Price"><span>&#8377;{{item.price}} </span></td>
+                                        <td class="text-center" data-title="Stock">
+                                        <span>1</span>
+                                            </td>
+                                            <td class="text-right" data-title="Cart">
+                                                <span>&#8377;{{item.subtotal}} </span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    <!-- <tr>
+										<td>1010</td>
+                                        <td class="image"><img src="assets/imgs/shop/product-11-2.jpg" alt="#"></td>
+                                        <td class="product-des">
+                                            <h5 class="product-name"><a href="shop-product-right.html">Amazon Essentials Women's Tank</a></h5>
+                                            <p class="font-xs">Sit at ipsum amet clita no est,<br> sed amet sadipscing et gubergren</p>
+                                        </td>
+                                        <td class="price" data-title="Price"><span>&#8377;75.00 </span></td>
+                                      <td class="text-center" data-title="Stock">
+                                      <span>1</span>
+                                        </td>
+                                        <td class="text-right" data-title="Cart">
+                                            <span>&#8377;150.00 </span>
+                                        </td>
+                                        <td><span class="badge rounded-pill alert-success">Delivered</span></td>
+                                    </tr>
+                                    <tr>
+										<td>1010</td>
+                                        <td class="image"><img src="assets/imgs/shop/product-6-1.jpg" alt="#"></td>
+                                        <td class="product-des">
+                                            <h5 class="product-name"><a href="shop-product-right.html">Amazon Brand - Daily Ritual Women's Jersey </a></h5>
+                                            <p class="font-xs">Erat amet et et amet diam et et.<br> Justo amet at dolore
+                                            </p>
+                                        </td>
+                                        <td class="price" data-title="Price"><span>&#8377;62.00 </span></td>
+                                        <td class="text-center" data-title="Stock">
+                                      <span>1</span>
+                                        </td>
+                                        <td class="text-right" data-title="Cart">
+                                            <span>&#8377;62.00 </span>
+                                        </td>
+                                        <td><span class="badge rounded-pill alert-warning">Shipped</span></td>
+                                    </tr>
+                                    <tr>
+                                   
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+                   
+                    
+                        <div class="row justify-content-end">
+                          
+                            <div class="col-lg-4 text-end">
+                               
+                                  
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="cart_total_label">Cart Subtotal</td>
+                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">&#8377;{{instance.total_amount}}</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="cart_total_label">Shipping</td>
+                                                    <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free Shipping</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="cart_total_label">Total</td>
+                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">&#8377;{{instance.amount_payable}}</span></strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                 
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+{% endblock main-content %}
+{% block extra-script %}
+    
+{% endblock extra-script %}

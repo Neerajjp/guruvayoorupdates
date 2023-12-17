@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="screen-overlay"></div>
+<aside class="navbar-aside" id="offcanvas_aside">
+  <div class="aside-top"> 
+    <a href="{% url 'main:dashboard' %}" class="brand-wrap"> 
+      {% if shop_details.logo %}
+        <img src="{{shop_details.logo.url}}" class="logo" alt="{% if shop_details.shop_name %}{{shop_details.shop_name}}{% else %}Evara{% endif %} Dashboard">
+      {% else %}
+        <img src="{% static 'imgs/theme/logo.svg' %}" class="logo" alt="Evara Dashboard">
+      {% endif %}
+    </a>
+    <div>
+      <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+    </div>
+  </div>
+ <nav>
+    <ul class="menu-aside">
+      <li class="menu-item {% if dashboard_active %}active{% endif %}"> 
+        <a class="menu-link" href="{% url 'main:dashboard' %}"> 
+          <i class="icon material-icons md-shopping_bag"></i> <span class="text">Home</span> 
+        </a> 
+      </li>
+      <li class="menu-item {% if products_active %}active{% endif %}"> <a class="menu-link" href="{% url 'products:products' %}"> <i class="icon material-icons md-shopping_bag"></i> <span class="text">Product List</span> </a> </li>
+      <li class="menu-item {% if categories_active %}active{% endif %}"> <a class="menu-link" href="{% url 'products:categories' %}"> <i class="icon material-icons md-category"></i> <span class="text">Categories List</span> </a> </li>
+      <!-- <li class="menu-item {% if sub_categories_active %}active{% endif %}"> <a class="menu-link" href="{% url 'products:sub_categories' %}"> <i class="icon material-icons md-category"></i> <span class="text">Sub Categories List</span> </a> </li> -->
+      <li class="menu-item {% if entry_product_active %}active{% endif %}"> <a class="menu-link" href="{% url 'products:create_product' %}"> <i class="icon material-icons md-add_box"></i> <span class="text">Add products</span> </a> </li>
+      <li class="menu-item {% if orders_active %}active{% endif %}"> <a class="menu-link" href="{% url 'orders:orders' %}"> <i class="icon material-icons md-shopping_cart"></i> <span class="text">Order list</span> </a>
+       
+      </li>
+      <li class="menu-item {% if tax_slabs_active %}active{% endif %}"> <a class="menu-link" href="{% url 'general:tax_slabs' %}"> <i class="icon material-icons md-money"></i> <span class="text">Tax Slabs</span> </a> </li>
+		  <li class="menu-item {% if banner_images_active %}active{% endif %}"> <a class="menu-link" href="{% url 'general:banner_images' %}"> <i class="icon material-icons md-image"></i> <span class="text">Banner Images</span> </a> </li>
+		<li class="menu-item {% if pages_active %}active{% endif %}"> <a class="menu-link" href="{% url 'general:pages' %}"> <i class="icon material-icons md-pages"></i> <span class="text">Pages</span> </a> </li>
+    </ul>
+    <hr>
+    <ul class="menu-aside">
+      <li class="menu-item {% if settings_active %}active{% endif %}"> <a class="menu-link" href="{% url 'general:shop_settings' %}"> <i class="icon material-icons md-settings"></i> <span class="text">Settings</span> </a>
+      </li>
+    </ul>
+    <br>
+    <br>
+  </nav>
+</aside>
+<main class="main-wrap">
+  <header class="main-header navbar">
+    <div class="col-search">
+      <form class="searchform">
+        <div class="input-group">
+          <input list="search_terms" type="text" class="form-control" placeholder="Search term">
+          <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button>
+        </div>
+        <datalist id="search_terms">
+          <option value="Products">
+          <option value="New orders">
+          <option value="Apple iphone">
+          <option value="Ahmed Hassan"> 
+        </datalist>
+      </form>
+    </div>
+    <div class="col-nav">
+      <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i></button>
+      <ul class="nav">
+        <li class="dropdown nav-item"> <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="{% static 'imgs/people/avatar2.jpg' %}" alt="User"></a>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount"> 
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-danger" href="{% url 'auth_logout' %}"><i class="material-icons md-exit_to_app"></i>Logout</a> </div>
+        </li>
+      </ul>
+    </div>
+  </header>
+  {% block main_content %}
+  {% endblock main_content %}
+  {% include 'includes/footer.html' %}
+</main>
+{% endblock content %}
+{% block static %}
+  {% block static1 %}
+  {% endblock static1 %}
+{% endblock static %}

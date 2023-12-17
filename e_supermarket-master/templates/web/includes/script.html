@@ -1,0 +1,194 @@
+<!-- Otp Send -->
+<script>
+    $(document).on('click', '.otp-send-button', function (e) {
+        e.preventDefault();
+        var name = $('form.login-form input#name').val();
+        var phone = $('form.login-form input#phone').val();
+        var url = "{{ otp_send_url }}";
+        var action = $(this).attr("action-page");
+        if(name == undefined){
+            name = 'hei'
+        };
+        console.log("name:",name,"phone:",phone,"url",url,"action",action)
+        if (String(phone).length != 10){
+            alert("Invalid phone number")
+        }
+        else{
+            console.log("here")
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: 'json',
+                data: {
+                    name : name,
+                    phone : phone,
+                    action : action,
+                },
+                success: function (data) {
+                    var status = data['status'];
+                    var message = data['message']
+                    console.log(status, message)
+                    if (status == "true"){
+                        $('.otp-send-button').hide()
+                        $('.otp-submit-button').show()
+                        $('.otp-section').show()
+                    }
+                    else{
+                        alert(message)
+                    }
+                }
+            });
+        }
+    });
+</script>
+<!-- Verify Otp -->
+<script>
+    $(document).on('click', '.otp-submit-button', function (e) {
+        e.preventDefault();
+        var phone = $('form.login-form input#phone').val();
+        var otp = $('form.login-form input#otp').val();
+        var url = "{{ verify_otp_url }}";
+        var redirect_url = "{{ path }}";
+        var action = $(this).attr("data-action")
+        if (String(phone).length != 10){
+            alert("Invalid phone number")
+        }
+        else if (String(otp).length != 4){
+            alert("Invalid phone number")
+        }
+        else{
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: 'json',
+                data: {
+                    phone : phone,
+                    otp : otp,
+                    redirect_url : redirect_url,
+                    action : action,
+                },
+                success: function (data) {
+                    var status = data['status'];
+                    var message = data['message'];
+
+                    if (status == "true"){
+                        redirect_url = data['redirect_url'];
+                        window.location.href = redirect_url
+                    }
+                    else{
+                        alert(message)
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+<!-- Add To Cart -->
+<script>
+    $(document).on('click', '.add-item-cart', function (e) {
+        e.preventDefault();
+        var is_customer = "{{ is_customer }}";
+        if (is_customer == "False"){
+            window.location.href = "{% url 'web:login' %}";
+        }
+        $this = $(this);
+        parent = $(this).parents('.product-cart-wrap')
+        var url = $(this).attr("data-url");
+        var qty = $(this).attr("data-qty")
+        $.ajax({
+            type: "GET",
+            url: url,
+            dataType: 'json',
+            data: {
+                qty: qty
+            },
+            success: function (data) {
+                var status = data['status'];
+                var message = data['message'];
+
+                if(status == "true") {
+                    var cart_item_count = data['cart_item_count'];
+
+                    var count = parseInt(cart_item_count)
+                    if (qty == undefined){
+                        qty = 1
+                    }
+                    if (qty >= 2){
+                        var data = "items"
+                    }
+                    else{
+                        var data = "item"
+                    }
+                    $('.cart-items-count').html(cart_item_count)
+                    $this.hide()
+                    parent.find('.product-action-1 button.exist-button').show()
+                    $('.button.button-add-to-cart.exist-button').show()
+                    parent.find(".cart-message").show()
+                    setInterval(function(){         
+                        // time= time - 1000; //reduce each second
+                        // timeCount.innerHTML = (time/1000)%60;
+                        parent.find(".cart-message").hide()
+                    }, 2000);
+                }
+            }
+        });
+    });
+</script>
+<!-- End Cart -->
+
+<!-- Place Order -->
+<script>
+    $(document).on('click', '#placeOrder', function (e) {
+        e.preventDefault();
+        var is_customer = "{{ is_customer }}";
+        if (is_customer == "False"){
+            window.location.href = "{% url 'web:login' %}";
+        }
+        var url = "{% url 'web:place_order' %}";
+        console.log("url",url)
+
+        $.ajax({
+            type: "GET",
+            url: url,
+            dataType: 'json',
+            success: function (data) {
+                var status = data['status'];
+                var message = data['message'];
+                var redirect = data['redirect'];
+                var redirect_url = data['redirect_url'];
+                var stable = data['stable'];
+                var title = data['title'];
+
+                if (status == "true"){
+                    function doAfter() {
+                        window.location.href = redirect_url;
+                    };
+
+                    swal(
+                        {
+                            title: title,
+                            text: message,
+                            type: "success"
+                        },
+                        function () {
+                            doAfter();
+                        }
+                    );
+                }
+                else{
+                    
+                    swal(title, message, "error");
+
+                    if (stable != "true") {
+                        window.setTimeout(function () { }, 2000);
+                    }
+                    if (status == "true"){
+                        window.location.href = "{% url 'web:index' %}";
+                    }
+                }
+            }
+        });
+    });
+</script>
+<!-- End Place Order -->

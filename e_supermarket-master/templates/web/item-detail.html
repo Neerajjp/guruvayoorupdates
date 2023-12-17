@@ -1,0 +1,252 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% block top-content %}
+<!-- Modal -->
+<!-- <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">              
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>       
+                <div class="modal-body">
+                    <div class="deal" style="background-image: url('assets/imgs/banner/menu-banner-7.png')">
+                        <div class="deal-top">
+                            <h2 class="text-brand">Deal of the Day</h2>
+                            <h5>Limited quantities.</h5>
+                        </div>
+                        <div class="deal-content">
+                            <h6 class="product-title"><a href="shop-product-right.html">Summer Collection New Morden Design</a></h6>
+                            <div class="product-price"><span class="new-price">$139.00</span><span class="old-price">$160.99</span></div>
+                        </div>
+                        <div class="deal-bottom">
+                            <p>Hurry Up! Offer End In:</p>
+                            <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"><span class="countdown-section"><span class="countdown-amount hover-up">03</span><span class="countdown-period"> days </span></span><span class="countdown-section"><span class="countdown-amount hover-up">02</span><span class="countdown-period"> hours </span></span><span class="countdown-section"><span class="countdown-amount hover-up">43</span><span class="countdown-period"> mins </span></span><span class="countdown-section"><span class="countdown-amount hover-up">29</span><span class="countdown-period"> sec </span></span></div>
+                            <a href="shop-grid-right.html" class="btn hover-up">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>        
+        </div>
+        </div>
+    </div> -->
+
+{% endblock top-content %}
+
+<!-- Quick view -->
+{% block main-content %}
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="{% url 'web:index' %}" rel="nofollow">Home</a>
+                <span></span> <a href="{% url 'web:items' pk=item.category.pk %}" rel="nofollow">Items</a>
+                <span></span> Item Detail
+            </div>
+        </div>
+    </div>
+    <section class="mt-100 mb-100 position-relative">
+        <div class="bg-square"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--     <div class="shop-product-fillter">
+                          <div class="totall-product">
+                                <p> We found <strong class="text-brand">688</strong> items for you!</p>
+							</div>
+                            <div class="sort-by-product-area">
+                                <div class="sort-by-cover mr-10">
+                                    <div class="sort-by-product-wrap">
+                                        <div class="sort-by">
+                                            <span><i class="fi-rs-apps"></i>Show:</span>
+                                        </div>
+                                        <div class="sort-by-dropdown-wrap">
+                                            <span> 50 <i class="fi-rs-angle-small-down"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="sort-by-dropdown">
+                                        <ul>
+                                            <li><a class="active" href="#">50</a></li>
+                                            <li><a href="#">100</a></li>
+                                            <li><a href="#">150</a></li>
+                                            <li><a href="#">200</a></li>
+                                            <li><a href="#">All</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="sort-by-cover">
+                                    <div class="sort-by-product-wrap">
+                                        <div class="sort-by">
+                                            <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
+                                        </div>
+                                        <div class="sort-by-dropdown-wrap">
+                                            <span> Featured <i class="fi-rs-angle-small-down"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="sort-by-dropdown">
+                                        <ul>
+                                            <li><a class="active" href="#">Featured</a></li>
+                                            <li><a href="#">Price: Low to High</a></li>
+                                            <li><a href="#">Price: High to Low</a></li>
+                                            <li><a href="#">Release Date</a></li>
+                                            <li><a href="#">Avg. Rating</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                    <div class="row product-grid-3 justify-content-center">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="product-cart-wrap mb-30">
+                                <div class="product-content-wrap mt-15 mb-0">
+                                    <h2>Colorful Pattern Shirts</h2>
+                                </div>
+                                <div class="product-img-action-wrap">
+                                    <div class="product-img product-img-zoom">
+                                        <a href="shop-product-right.html">
+                                            <img class="default-img" src="{% static 'web/imgs/shop/product-2-1.jpg' %}" alt="">
+                                            <img class="hover-img" src="{% static 'web/imgs/shop/product-2-2.jpg' %}" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="d-flex prod-quantity justify-content-between">
+                                <div class="d-flex justify-content-start">
+                                    <p>50GM</p>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <p>&#8377; 1.5</p>
+                                    <div class="qty-holder">
+                                        <button class="qty-dec">-</button>
+                                        <input class="qty-adj" type="number" value="0" />
+                                        <button class="qty-inc">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex prod-quantity justify-content-between mt-30">
+                                <div class="d-flex justify-content-start">
+                                    <p>100GM</p>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <p>&#8377; 3</p>
+                                    <div class="qty-holder">
+                                        <button class="qty-dec">-</button>
+                                        <input class="qty-adj" type="number" value="0" />
+                                        <button class="qty-inc">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex prod-quantity justify-content-between mt-30">
+                                <div class="d-flex justify-content-start">
+                                    <p>250GM</p>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <p>&#8377; 7.5</p>
+                                    <div class="qty-holder">
+                                        <button class="qty-dec">-</button>
+                                        <input class="qty-adj" type="number" value="0" />
+                                        <button class="qty-inc">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex prod-quantity justify-content-between mt-30">
+                                <div class="d-flex justify-content-start">
+                                    <p>500GM</p>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <p>&#8377; 15</p>
+                                    <div class="qty-holder">
+                                        <button class="qty-dec">-</button>
+                                        <input class="qty-adj" type="number" value="0" />
+                                        <button class="qty-inc">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex prod-quantity justify-content-between mt-30">
+                                <div class="d-flex justify-content-start">
+                                    <p>1KG</p>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <p>&#8377; 30</p>
+                                    <div class="qty-holder">
+                                        <button class="qty-dec">-</button>
+                                        <input class="qty-adj" type="number" value="0" />
+                                        <button class="qty-inc">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row product-grid-3 justify-content-center">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="product-cart-wrap mb-30">
+                                <div class="product-content-wrap mt-15 mb-0">
+                                    <h2>{{ default_variant.full_name }}</h2>
+                                </div>
+                                <div class="product-img-action-wrap">
+                                    <div class="product-img product-img-zoom">
+                                        <a href="shop-product-right.html">
+                                            <img class="default-img" src="{{ item.get_featured_image }}" alt="">
+                                            <img class="hover-img" src="{{ item.get_image }}" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            {% for variant in variants %}
+                                <div class="d-flex prod-quantity justify-content-between mt-30">
+                                    <div class="d-flex justify-content-start">
+                                        <p>{{ variant.title }}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <p>&#8377; {{ variant.price }}</p>
+                                        <div class="qty-holder">
+                                            <button class="qty-dec">-</button>
+                                            <input class="qty-adj" type="number" value="1" />
+                                            <button class="qty-inc">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!--pagination-->
+                    <!--     <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-start">
+                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                    <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">16</a></li>
+                                    <li class="page-item"><a class="page-link" href="#"><i class="fi-rs-angle-double-small-right"></i></a></li>
+                                </ul>
+                            </nav>
+                        </div>-->
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock main-content %}
+{% block extra-script %}
+<script>
+    // var qtyHolders = document.querySelectorAll(".qty-holder");
+    var qtyDecs = document.querySelectorAll(".qty-dec");
+    var qtyIncs = document.querySelectorAll(".qty-inc");
+
+    qtyDecs.forEach((qtyDec) => {
+        qtyDec.addEventListener("click", function (e) {
+            if (e.target.nextElementSibling.value > 0) {
+                e.target.nextElementSibling.value--;
+            } else {
+                // delete the item, etc
+            }
+        })
+    });
+    qtyIncs.forEach((qtyDec) => {
+        qtyDec.addEventListener("click", function (e) {
+            e.target.previousElementSibling.value++;
+        })
+    });
+</script>
+{% endblock extra-script %}
