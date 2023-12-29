@@ -1,0 +1,242 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% block top-content %}
+    <!-- Modal -->
+    <!-- <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">              
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>       
+                <div class="modal-body">
+                    <div class="deal" style="background-image: url('{% static 'web' %}/imgs/banner/menu-banner-7.png')">
+                        <div class="deal-top">
+                            <h2 class="text-brand">Deal of the Day</h2>
+                            <h5>Limited quantities.</h5>
+                        </div>
+                        <div class="deal-content">
+                            <h6 class="product-title"><a href="shop-product-right.html">Summer Collection New Morden Design</a></h6>
+                            <div class="product-price"><span class="new-price">$139.00</span><span class="old-price">$160.99</span></div>
+                        </div>
+                        <div class="deal-bottom">
+                            <p>Hurry Up! Offer End In:</p>
+                            <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"><span class="countdown-section"><span class="countdown-amount hover-up">03</span><span class="countdown-period"> days </span></span><span class="countdown-section"><span class="countdown-amount hover-up">02</span><span class="countdown-period"> hours </span></span><span class="countdown-section"><span class="countdown-amount hover-up">43</span><span class="countdown-period"> mins </span></span><span class="countdown-section"><span class="countdown-amount hover-up">29</span><span class="countdown-period"> sec </span></span></div>
+                            <a href="shop-grid-right.html" class="btn hover-up">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>        
+        </div>
+        </div>
+    </div> -->
+
+{% endblock top-content %}
+
+<!-- Quick view -->
+{% block main-content %}
+    <main class="main">       
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="{% url 'web:index' %}" rel="nofollow">Home</a>
+                    <span></span> Store
+                </div>
+            </div>
+        </div>
+      <section class="mt-50 mb-50">
+            <div class="container">
+                <div class="row flex-row-reverse">
+                    <div class="col-lg-9">
+                        <div class="shop-product-fillter style-2">
+                            <div class="totall-product">
+                                <p> We found <strong class="text-brand">{{instances.count}}</strong> items for you!</p>
+                            </div>
+                            <!-- <div class="sort-by-product-area">
+                                <div class="sort-by-cover mr-10">
+                                    <div class="sort-by-product-wrap">
+                                        <div class="sort-by">
+                                            <span><i class="fi-rs-apps"></i>Show:</span>
+                                        </div>
+                                        <div class="sort-by-dropdown-wrap">
+                                            <span> 50 <i class="fi-rs-angle-small-down"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="sort-by-dropdown">
+                                        <ul>
+                                            <li><a class="active" href="#">50</a></li>
+                                            <li><a href="#">100</a></li>
+                                            <li><a href="#">150</a></li>
+                                            <li><a href="#">200</a></li>
+                                            <li><a href="#">All</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="sort-by-cover">
+                                    <div class="sort-by-product-wrap">
+                                        <div class="sort-by">
+                                            <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
+                                        </div>
+                                        <div class="sort-by-dropdown-wrap">
+                                            <span> Featured <i class="fi-rs-angle-small-down"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="sort-by-dropdown">
+                                        <ul>
+                                            <li><a class="active" href="#">Featured</a></li>
+                                            <li><a href="#">Price: Low to High</a></li>
+                                            <li><a href="#">Price: High to Low</a></li>
+                                            <li><a href="#">Release Date</a></li>
+                                            <li><a href="#">Avg. Rating</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="product-list mb-50">
+                            {% for instance in instances %}
+                                <div class="product-cart-wrap">
+                                    <div class="product-img-action-wrap">
+                                        <div class="product-img product-img-zoom">
+                                            <div class="product-img-inner">
+                                                <a href="{% url 'web:item_details' pk=instance.pk %}">
+                                                    <img class="default-img" src="{{ instance.get_featured_image}}" alt="">
+                                                    <img class="hover-img" src="{{ instance.get_image}}" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-action-1">
+                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                                <i class="fi-rs-search"></i>
+                                            </a>
+                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                        </div>
+                                        <div class="product-badges product-badges-position product-badges-mrg">
+                                            <span class="hot">{{instance.category.name}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-content-wrap">
+                                        <div class="product-category">
+                                            <a href="{% url 'web:items' pk=instance.category.pk %}">{{instance.category.name}}</a>
+                                        </div>
+                                        <h2><a href="{% url 'web:item_details' pk=instance.pk %}">{{ instance.name }}</a></h2>
+                                        <div class="product-price">
+                                            <span>&#8377; {{instance.default_variant.price}} </span>
+                                            <span class="old-price">&#8377; {{instance.default_variant.mrp}}</span>
+                                        </div>
+                                        <p class="mt-15">
+                                            {{instance.description}}
+                                            <!-- Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam beatae consectetur, 
+                                            atque inventore aliquam adipisci perspiciatis nostrum qui consequatur praesentium? -->
+                                        </p>
+                                        <div class="product-action-1 show">
+                                            <a aria-label="Add to Cart" class="action-btn add-item-cart" data-qty="1" data-url="{% url 'web:add_to_cart' pk=instance.default_variant.pk %}">
+                                                <i class="fi-rs-shopping-bag-add"></i>Add to Cart
+                                            </a>
+                                        <!--   <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>90%</span>
+                                                </span>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <!--pagination-->
+                        <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-start">
+                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                    <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">16</a></li>
+                                    <li class="page-item"><a class="page-link" href="#"><i class="fi-rs-angle-double-small-right"></i></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 primary-sidebar sticky-sidebar">
+                        <div class="widget-category mb-30">
+                            <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
+                            <ul class="categories">
+                                <li><a href="shop-grid-right.html">Shoes & Bags</a></li>
+                                <li><a href="shop-grid-right.html">Blouses & Shirts</a></li>
+                                <li><a href="shop-grid-right.html">Dresses</a></li>
+                                <li><a href="shop-grid-right.html">Swimwear</a></li>
+                                <li><a href="shop-grid-right.html">Beauty</a></li>
+                                <li><a href="shop-grid-right.html">Jewelry & Watch</a></li>
+                                <li><a href="shop-grid-right.html">Accessories</a></li>
+                            </ul>
+                        </div>
+                        <!-- Fillter By Price -->
+                        <!-- <div class="sidebar-widget price_range range mb-30">
+                            <div class="widget-header position-relative mb-20 pb-10">
+                                <h5 class="widget-title mb-10">Fill by price</h5>
+                                <div class="bt-1 border-color-1"></div>
+                            </div>
+                            <div class="price-filter">
+                                <div class="price-filter-inner">
+                                    <div id="slider-range"></div>
+                                    <div class="price_slider_amount">
+                                        <div class="label-input">
+                                            <span>Range:</span><input type="text" id="amount" name="price" placeholder="Add Your Price" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group">
+                                <div class="list-group-item mb-10 mt-10">
+                                    <label class="fw-900">Color</label>
+                                    <div class="custome-checkbox">
+                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="">
+                                        <label class="form-check-label" for="exampleCheckbox1"><span>Red (56)</span></label>
+                                        <br>
+                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox2" value="">
+                                        <label class="form-check-label" for="exampleCheckbox2"><span>Green (78)</span></label>
+                                        <br>
+                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox3" value="">
+                                        <label class="form-check-label" for="exampleCheckbox3"><span>Blue (54)</span></label>
+                                    </div>
+                                    <label class="fw-900 mt-15">Item Condition</label>
+                                    <div class="custome-checkbox">
+                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox11" value="">
+                                        <label class="form-check-label" for="exampleCheckbox11"><span>New (1506)</span></label>
+                                        <br>
+                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox21" value="">
+                                        <label class="form-check-label" for="exampleCheckbox21"><span>Refurbished (27)</span></label>
+                                        <br>
+                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox31" value="">
+                                        <label class="form-check-label" for="exampleCheckbox31"><span>Used (45)</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="shop-grid-right.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a>
+                        </div> -->
+                      
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock main-content %}
+{% block extra-script %}
+	<script>
+        // var qtyHolders = document.querySelectorAll(".qty-holder");
+        var qtyDecs = document.querySelectorAll(".qty-dec");
+        var qtyIncs = document.querySelectorAll(".qty-inc");
+
+        qtyDecs.forEach((qtyDec) => {
+        qtyDec.addEventListener("click",function(e){
+            if(e.target.nextElementSibling.value > 0){
+            e.target.nextElementSibling.value--;
+            } else {
+            // delete the item, etc
+            }
+        });
+        });
+        qtyIncs.forEach((qtyDec) => {
+        qtyDec.addEventListener("click",function(e){
+            e.target.previousElementSibling.value++;
+        });
+        });
+   </script>
+{% endblock extra-script %}

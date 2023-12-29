@@ -1,0 +1,111 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block main_content %}
+    <section class="content-main">
+    <div class="content-header">
+        <div>
+            <h2 class="content-title card-title">Categories List</h2>
+            
+        </div>
+        <div>
+            <input type="text" placeholder="Search Categories" class="form-control bg-white">
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <form action="" class="ajax reset redirect" enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label for="category" class="form-label">Category</label>
+                            <!-- <label class="form-label">Parent</label> -->
+                                <select class="form-select" name="category">
+                                    {% for value in form.category %}
+                                        <option>{{value}}</option>
+                                    {% endfor %}
+                                    <!-- <option>T-Shirts</option> -->
+                                </select>
+                            <!-- <input type="text" placeholder="Type here" class="form-control" id="product_name" value="{{ form.category.value|default:''}}" name="category" /> -->
+                        </div>
+                        <div class="mb-4">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" placeholder="Type here" class="form-control" id="product_name" value="{{ form.name.value|default:''}}" name="name" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="name" class="form-label">Icon Name</label>
+                            <input type="text" placeholder="Type here" class="form-control" id="icon_name" value="{{ form.icon_name.value|default:''}}" name="icon_name" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="image" class="form-label">Image</label>
+                            <input type="file" placeholder="Type here" class="form-control" id="product_slug" value="{{ form.image.value|default:''}}" name="image" />
+                        </div>
+                        {% if sub_category %}
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Edit category</button>
+                            </div>
+                        {% else %}
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Create category</button>
+                            </div>
+                        {% endif %}
+                    </form>
+                </div>
+                <div class="col-md-9">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <!-- <th class="text-center">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" />
+                                        </div>
+                                    </th> -->
+                                    <th>ID</th>
+                                    <th>Category</th>
+                                    <th>Name</th>
+                                    <th>Image</th>
+                                    <!-- <th>Slug</th>
+                                    <th>Order</th> -->
+                                    <th class="text-end">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for instance in instances %}
+                                    <tr>
+                                        <!-- <td class="text-center">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" />
+                                            </div>
+                                        </td> -->
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{instance.category}}</td>
+                                        <td><b>{{ instance.name }}</b></td>
+                                        <td><img src="{{ instance.dashboard_image }}" alt=""></td>
+                                        <!-- <td>/men</td>
+                                        <td>1</td> -->
+                                        <td class="text-end">
+                                            <div class="dropdown">
+                                                <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                                <div class="dropdown-menu">
+                                                    
+                                                    <a class="dropdown-item" href="{% url 'products:sub_categories' %}?pk={{instance.pk}}">Edit info</a>
+                                                    <a class="dropdown-item text-danger action-button remove"
+                                                        data-id="{{instance.pk}}" href="{% url 'products:delete_subcategory' pk=instance.pk %}"
+                                                        data-text="{{confirm_delete_message}}" data-title="Are you sure?">Delete
+                                                    </a>
+                                                </div>
+                                            </div> <!-- dropdown //end -->
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- .col// -->
+            </div> <!-- .row // -->
+        </div> <!-- card body .// -->
+    </div> <!-- card .// -->
+    </section> 
+{% endblock main_content %}
+        

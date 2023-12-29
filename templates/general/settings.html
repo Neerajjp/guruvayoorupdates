@@ -1,0 +1,170 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block main_content %}
+  <section class="content-main">
+    <div class="content-header">
+        <h2 class="content-title">Settings</h2>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row gx-5">
+                <aside class="col-lg-3 border-end">
+                    <nav class="nav nav-pills flex-lg-column mb-4">
+                        <a class="nav-link active" aria-current="page" href="#">General</a>
+                        <a class="nav-link" href="#">Moderators</a>
+                        <a class="nav-link" href="#">Admin account</a>
+                        <a class="nav-link" href="#">SEO settings</a>
+                        <a class="nav-link" href="#">Mail settings</a>
+                       
+                    </nav>
+                </aside>
+                <div class="col-lg-9">
+                    <section class="content-body p-xl-4">
+                        <form class="ajax reset redirect" enctype="multipart/form-data" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="row gx-3">
+                                        <div class="col-6  mb-3">
+                                            <label class="form-label">Shop Name</label>
+                                            <input class="form-control" type="text" placeholder="Type here" name="shop_name" value="{{form.shop_name.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-6  mb-3">
+                                            <label class="form-label">Pin Code</label>
+                                            <input class="form-control" type="text" placeholder="Type here" name="pincode" value="{{form.pincode.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-lg-6  mb-3">
+                                            <label class="form-label">Phone</label>
+                                            <input class="form-control" type="tel" placeholder="mobile number" name="phone" value="{{form.phone.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-lg-6  mb-3">
+                                            <label class="form-label">Phone No:2</label>
+                                            <input class="form-control" type="tel" placeholder="type here" name="phone2" value="{{form.phone2.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-lg-6  mb-3">
+                                            <label class="form-label">Location</label>
+                                            <input class="form-control" type="text" placeholder="type here" name="location_name" id="location" value="{{location_form.location_name.value|default:''}}">
+                                            <div id="map"></div>
+                                        </div> <!-- col .// -->
+                                        <div class="col-lg-6  mb-3" style="display: none;">
+                                            <label class="form-label">Latitude</label>
+                                            <input class="form-control" type="text" placeholder="type here" name="latitude" id="latitude" value="{{location_form.latitude.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-lg-6  mb-3" style="display: none;">
+                                            <label class="form-label">Longitude</label>
+                                            <input class="form-control" type="text" placeholder="type here" name="longitude" id="longitude" value="{{location_form.longitude.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-lg-6  mb-3">
+                                            <label class="form-label">Address</label>
+                                            <input class="form-control" type="text" placeholder="Type here" name="address" value="{{form.address.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-6  mb-3">
+                                            <label class="form-label">Account Number</label>
+                                            <input class="form-control" type="text" placeholder="Type here" name="account_number" value="{{form.account_number.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-6  mb-3">
+                                            <label class="form-label">Account Holder Name</label>
+                                            <input class="form-control" type="text" placeholder="Type here" name="account_holder_name" value="{{form.account_holder_name.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-lg-6  mb-3">
+                                            <label class="form-label">Ifsc Code</label>
+                                            <input class="form-control" type="text" placeholder="ifsc" name="ifsc_code" value="{{form.ifsc_code.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-lg-6  mb-3">
+                                            <label class="form-label">Bank Name</label>
+                                            <input class="form-control" type="text" placeholder="type here" name="bank_name" value="{{form.bank_name.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-lg-6  mb-3">
+                                            <label class="form-label">License</label>
+                                            <input class="form-control" type="text" placeholder="type here" name="license" value="{{form.license.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-lg-6  mb-3">
+                                            <label class="form-label">License Number</label>
+                                            <input class="form-control" type="text" placeholder="type here" name="license_number" value="{{form.license_number.value|default:''}}">
+                                        </div> <!-- col .// -->
+
+                                        <div class="col-lg-6  mb-3">
+                                            <label class="form-label">Distance Covered</label>
+                                            <input class="form-control" type="text" placeholder="Distance Covered" name="distance_covered" value="{{form.distance_covered.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-lg-6  mb-3">
+                                            <label class="form-label">Delivery Charge</label>
+                                            <input class="form-control" type="text" placeholder="type here" name="delivery_charge" value="{{form.delivery_charge.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-lg-6  mb-3">
+                                            <label class="form-label">Free Delivery</label>
+                                            <input class="form-control" type="text" placeholder="type here" name="free_delivery" value="{{form.free_delivery.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        
+                                        <div class="col-lg-6  mb-3">
+                                            <label class="form-label">Facebook Link</label>
+                                            <input class="form-control" type="text" placeholder="type here" name="facebook_link" value="{{form.facebook_link.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-lg-6  mb-3">
+                                            <label class="form-label">Instagram Link</label>
+                                            <input class="form-control" type="text" placeholder="Type here" name="instagram_link" value="{{form.instagram_link.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-lg-6  mb-3">
+                                            <label class="form-label">Twitter Link</label>
+                                            <input class="form-control" type="text" placeholder="type here" name="twitter_link" value="{{form.twitter_link.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <div class="col-lg-6  mb-3">
+                                            <label class="form-label">Youtube Link</label>
+                                            <input class="form-control" type="text" placeholder="Type here" name="youtube_link" value="{{form.youtube_link.value|default:''}}">
+                                        </div> <!-- col .// -->
+                                        <!-- <div class="col-lg-6  mb-3">
+                                            <label class="form-label">Birthday</label>
+                                            <input class="form-control" type="date">
+                                        </div> col .// -->
+                                    </div> <!-- row.// -->
+                                </div> <!-- col.// -->
+                                <aside class="col-lg-4">
+                                    <figure class="text-lg-center">
+                                        <div class="input-upload">
+                                            <label class="form-label">Shop Image</label>
+                                            {% if form.shop_image.value %}
+                                                <img src="{{ form.shop_image.value.url}}" alt="">
+                                            {% endif %}
+                                            <input class="form-control" type="file" value="{% if form.shop_image.value %}{{ form.shop_image.value|default:''}}{% endif %}" name="shop_image">
+                                        </div>
+                                    </figure>
+                                    <figure class="text-lg-center">
+                                        <div class="input-upload">
+                                            <label class="form-label">Logo</label>
+                                            {% if form.logo.value %}
+                                                <img src="{{ form.logo.value.url}}" alt="">
+                                            {% endif %}
+                                            <input class="form-control" type="file" {% if form.logo.value %} value="{{ form.logo.value|default:''}}" {% endif %} name="logo">
+                                        </div>
+                                    </figure>
+                                </aside> <!-- col.// -->
+                            </div> <!-- row.// -->
+                            <br>
+                            <button class="btn btn-primary" type="submit">{{button}}</button>
+                        </form>
+                        <hr class="my-5">
+                        <!-- <div class="row" style="max-width:920px">
+                            <div class="col-md">
+                                <article class="box mb-3 bg-light">
+                                    <a class="btn float-end btn-light btn-sm rounded font-md" href="#">Change</a>
+                                    <h6>Password</h6>
+                                    <small class="text-muted d-block" style="width:70%">You can reset or change your password by clicking here</small>
+                                </article>
+                            </div> <!-- col.// -->
+                            <!-- <div class="col-md">
+                                <article class="box mb-3 bg-light">
+                                    <a class="btn float-end btn-light rounded btn-sm font-md" href="#">Deactivate</a>
+                                    <h6>Remove account</h6>
+                                    <small class="text-muted d-block" style="width:70%">Once you delete your account, there is no going back.</small>
+                                </article>
+                            </div> col.// -->
+                        <!-- </div> row.// --> 
+                    </section> <!-- content-body .// -->
+                </div> <!-- col.// -->
+            </div> <!-- row.// -->
+        </div> <!-- card body end// -->
+    </div> <!-- card end// -->
+  </section> 
+  {% include 'includes/location_js.html' %}
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_tosasT8mLBttRlEJugdVDWnfJp-pr_A&callback=initAutocomplete&libraries=places&v=weekly" defer></script>
+{% endblock main_content %}

@@ -1,0 +1,174 @@
+{% extends 'base1.html' %}
+{% load i18n %}
+{% load static %}
+{% block main_content %}
+    <section class="content-main">
+        <form class="ajax reset redirect" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-12">
+                    <div class="content-header">
+                        <h2 class="content-title">Add New Product</h2>
+                        <div>
+                            <button type="submit" class="btn btn-md rounded font-sm hover-up">Publish</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Product Detail</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <label for="name" class="form-label">Product Name</label>
+                                <input type="text" placeholder="Type here" class="form-control" id="name" value="{{ form.name.value|default:''}}" name="name">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label">Full description</label>
+                                {{form.description}}
+                                <!-- <textarea placeholder="Type here" class="form-control" rows="4" value="{{ instance.description.value|default:''}}" name="description"></textarea> -->
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label">Tax rate</label>
+                                <input type="text" placeholder="Type here" class="form-control" id="gst" value="{{ form.gst.value|default:''}}" name="gst">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label">Meta description</label>
+                                {{form.meta_keyword_description}}
+                                <!-- <textarea placeholder="Type here" class="form-control" rows="4" value="{{ form.meta_keyword_description.value|default:''}}" name="meta_keyword_description"></textarea> -->
+                            </div>
+                        </div>
+                    </div> <!-- card end// -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Variant Detail</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <label for="name" class="form-label">Title</label>
+                                <input type="text" placeholder="Type here" class="form-control" id="name" value="{{ variant_form.title.value|default:''}}" name="title">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mb-4">
+                                        <label class="form-label">MRP</label>
+                                        <div class="row gx-2">
+                                            <input placeholder="" type="text" class="form-control" value="{{ variant_form.mrp.value|default:'0'}}" name="mrp">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-4">
+                                        <label class="form-label">Price</label>
+                                        <input placeholder="" type="text" class="form-control" value="{{ variant_form.price.value|default:'0'}}" name="price">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-4">
+                                        <label class="form-label">Stock</label>
+                                        <input placeholder="1" type="text" class="form-control" value="{{ variant_form.stock.value|default:'1'}}" name="stock">
+                                    </div>
+                                </div>
+                            </div>
+                            <label class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" value="{{ variant_form.is_default.value|default:''}}" name="is_default" checked>
+                                <span class="form-check-label">Default</span>
+                            </label>
+                        </div>
+                    </div> <!-- card end// -->
+                </div>
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Product Image</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-upload">
+                                {% if form.featured_image.value %}
+                                    <img src="{{ form.featured_image.value.url}}" alt="">
+                                {% endif %}
+                                <input class="form-control" type="file" {% if form.featured_image.value %} value="{{ form.featured_image.value|default:''}}" {% endif %} name="featured_image">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-upload">
+                                {% if form.image.value %}
+                                    <img src="{{ form.image.value.url}}" alt="">
+                                {% endif %}
+                                <input class="form-control" type="file" {% if form.image.value %} value="{{ form.image.value|default:''}}" {% endif %} name="image">
+                            </div>
+                        </div>
+                    </div> <!-- card end// -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Category Details</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row gx-2">
+                                <div class="col-sm-12 mb-3">
+                                    <label class="form-label">Category</label>
+                                    <select class="form-select" name="category">
+                                        {% for value in form.category %}
+                                            <option> {{value}} </option>
+                                        {% endfor %}
+                                    </select>
+                                    <!-- {{form.category}} -->
+                                </div>
+                                <div class="col-sm-12 mb-3">
+                                    <label class="form-label">Status</label>
+                                    <select class="form-select" name="status">
+                                        {% for value in form.status %}
+                                            <option> {{value}} </option>
+                                        {% endfor %}
+                                    </select>
+                                    <!-- {{form.category}} -->
+                                </div>
+                                <!-- <div class="col-sm-12 mb-3">
+                                    <label class="form-label">Sub-category</label> -->
+                                    <!-- <select class="form-select" name="sub_category">
+                                        {% for value in form.sub_category %}
+                                            <option> {{value}} </option>
+                                        {% endfor %}
+                                    </select> -->
+                                    <!-- {{form.sub_category}}
+                                </div> -->
+                                <!-- <div class="mb-4">
+                                    <label for="product_name" class="form-label">Tags</label>
+                                    <input type="text" class="form-control">
+                                </div> -->
+                            </div> <!-- row.// -->
+                        </div>
+                    </div> <!-- card end// -->
+                </div>
+            </div>
+        </form>
+    </section> <!-- content-main end// -->
+{% endblock main_content %}
+{% block static1 %}
+    {% load static %}
+    {{form.media}}
+    <style>
+        .select2-container--default .select2-selection--single {
+            background-color:#f4f5f9;
+            border: none;
+            border-radius: 5px !important;
+        }
+        .select2-container .select2-selection--single {
+            height: 52px;
+            box-sizing: border-box;
+            cursor: pointer;
+            display: block;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            border-width: 8px 6px 0 6px;
+            margin-left: -8px;
+            margin-top: 8px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__clear {
+            top: 3px;
+        }
+    </style>
+{% endblock static1 %}

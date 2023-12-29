@@ -1,0 +1,202 @@
+{% extends 'web/base.html' %} {% load static %} {% block top-content %}
+<!-- Modal -->
+<!-- <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">              
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>       
+                <div class="modal-body">
+                    <div class="deal" style="background-image: url('{% static 'web/imgs/banner/menu-banner-' %}7.png')">
+                        <div class="deal-top">
+                            <h2 class="text-brand">Deal of the Day</h2>
+                            <h5>Limited quantities.</h5>
+                        </div>
+                        <div class="deal-content">
+                            <h6 class="product-title"><a href="shop-product-right.html">Summer Collection New Morden Design</a></h6>
+                            <div class="product-price"><span class="new-price">$139.00</span><span class="old-price">$160.99</span></div>
+                        </div>
+                        <div class="deal-bottom">
+                            <p>Hurry Up! Offer End In:</p>
+                            <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"><span class="countdown-section"><span class="countdown-amount hover-up">03</span><span class="countdown-period"> days </span></span><span class="countdown-section"><span class="countdown-amount hover-up">02</span><span class="countdown-period"> hours </span></span><span class="countdown-section"><span class="countdown-amount hover-up">43</span><span class="countdown-period"> mins </span></span><span class="countdown-section"><span class="countdown-amount hover-up">29</span><span class="countdown-period"> sec </span></span></div>
+                            <a href="shop-grid-right.html" class="btn hover-up">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>        
+        </div>
+        </div>
+    </div> -->
+
+{% endblock top-content %}
+
+<!-- Quick view -->
+{% block main-content %}
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="{% url 'web:index' %}" rel="nofollow">Home</a>
+                <span></span> Items
+            </div>
+        </div>
+    </div>
+    <section class="mt-100 mb-100 position-relative">
+        <div class="bg-square"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                        <div class="shop-product-fillter">
+                          <div class="totall-product">
+                                <p> We found <strong class="text-brand">{{items.count}}</strong> items for you!</p>
+							</div>
+                            <!-- <div class="sort-by-product-area">
+                                <div class="sort-by-cover mr-10">
+                                    <div class="sort-by-product-wrap">
+                                        <div class="sort-by">
+                                            <span><i class="fi-rs-apps"></i>Show:</span>
+                                        </div>
+                                        <div class="sort-by-dropdown-wrap">
+                                            <span> 50 <i class="fi-rs-angle-small-down"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="sort-by-dropdown">
+                                        <ul>
+                                            <li><a class="active" href="#">50</a></li>
+                                            <li><a href="#">100</a></li>
+                                            <li><a href="#">150</a></li>
+                                            <li><a href="#">200</a></li>
+                                            <li><a href="#">All</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="sort-by-cover">
+                                    <div class="sort-by-product-wrap">
+                                        <div class="sort-by">
+                                            <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
+                                        </div>
+                                        <div class="sort-by-dropdown-wrap">
+                                            <span> Featured <i class="fi-rs-angle-small-down"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="sort-by-dropdown">
+                                        <ul>
+                                            <li><a class="active" href="#">Featured</a></li>
+                                            <li><a href="#">Price: Low to High</a></li>
+                                            <li><a href="#">Price: High to Low</a></li>
+                                            <li><a href="#">Release Date</a></li>
+                                            <li><a href="#">Avg. Rating</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    <div class="row product-grid-3">
+                        {% for item in items %}
+                            <div class="col-lg-3 col-md-4">
+                                <div class="product-cart-wrap mb-30">
+                                    <div class="product-img-action-wrap">
+                                        <div class="product-img product-img-zoom">
+                                            <a href="{% url 'web:item_details' pk=item.pk %}">
+                                                <img class="default-img" src="{{ item.get_featured_image }}" alt="" />
+                                                <img class="hover-img" src="{{ item.get_image }}" alt="" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="product-content-wrap mt-20 mb-0">
+                                        <h2>
+                                            <a href="">{{ item.default_variant.product.name }}</a>
+                                        </h2>
+                                        <div class="product-price">
+                                            <span>&#8377;{{ item.default_variant.price }} </span>
+                                            <span class="old-price">&#8377;{{ item.default_variant.mrp }}</span>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex justify-content-between ">
+                                                <div class="bottom-area d-flex mt-10">
+                                                    <div class="qty-holder">
+                                                        <button class="qty-dec" onclick="downchange($(this))">
+                                                            -
+                                                        </button>
+                                                        <input class="qty-adj" type="number" value="1" />
+                                                        <button class="qty-inc" onclick="upchange($(this))">
+                                                            +
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="cart-message">
+                                                    <span>Item Added</span>
+                                                </div>
+                                                <div class="product-action-1 show d-flex mt-10 ">
+                                                    {% if item.default_variant.pk in cart_items_pk %}
+                                                        <button aria-label="Exist in Cart" class="action-btn hover-up">
+                                                            <i class="fi-rs-shopping-bag-add "></i>
+                                                        </button>
+                                                    {% else %}
+                                                        <button aria-label="Add To Cart" type="submit" class="action-btn hover-up add-item-cart" data-qty="1" data-url="{% url 'web:add_to_cart' pk=item.default_variant.pk %}">
+                                                            <i class="fi-rs-shopping-bag-add "></i>
+                                                        </button>
+                                                        <button aria-label="Exist in Cart" class="action-btn hover-up exist-button">
+                                                            <i class="fi-rs-shopping-bag-add "></i>
+                                                        </button>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            function upchange($this){
+                                                var parent = $this.parents('div.qty-holder');
+                                                var qty = parent.find('input.qty-adj').val();
+                                                console.log(qty,"qty")
+                                                var stock = '{{item.default_variant.stock}}';
+                                                stock = parseInt(stock)
+                                                if (stock > qty){
+                                                    var new_qty = parseFloat(qty) + 1;
+                                                    console.log(new_qty,"new qty")
+                                                    parent.find('input.qty-adj').val(new_qty);
+                                                    $(".add-item-cart").attr("data-qty",new_qty)
+                                                    // $(".buy-product-now").attr("data-qty",new_qty)
+                                                    $(".qty-adj").trigger('change');
+                                                }
+                                            };
+                                            function downchange($this){
+                                                var parent = $this.parents('div.qty-holder');
+                                                var qty = parent.find('.qty-adj').val();
+                                                var new_qty = parseFloat(qty) - 1;
+                                                if (new_qty < 1){
+                                                    new_qty = 1
+                                                }
+                                                parent.find('.qty-adj').val(new_qty);
+                                                $(".add-item-cart").attr("data-qty",new_qty)
+                                                // $(".buy-product-now").attr("data-qty",new_qty)
+                                                $(".qty-adj").trigger('change');
+                                            };
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% if pagination %}
+                        <!-- pagination-->
+                        <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-start">
+                                    {% for i in total_pages %}
+                                        <li class="page-item {% if page_num == forloop.counter %} active {% endif %}"><a class="page-link" href="{% url 'web:items' pk=category.pk%}?page_no={{forloop.counter}}">0{{forloop.counter}}</a></li>
+                                    {% endfor %}
+                                        <!-- <li class="page-item"><a class="page-link" href="#">02</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                        <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">16</a></li>
+                                        <li class="page-item"><a class="page-link" href="#"><i class="fi-rs-angle-double-small-right"></i></a></li> -->
+                                </ul>
+                            </nav>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock main-content %} 
+{% block extra-script %}
+
+{% endblock extra-script %}

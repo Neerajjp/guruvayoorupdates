@@ -1,0 +1,143 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% block top-content %}
+    <!-- Modal --> 
+    <!-- <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">              
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>       
+                    <div class="modal-body">
+                        <div class="deal" style="background-image: url('assets/imgs/banner/menu-banner-7.png')">
+                            <div class="deal-top">
+                                <h2 class="text-brand">Deal of the Day</h2>
+                                <h5>Limited quantities.</h5>
+                            </div>
+                            <div class="deal-content">
+                                <h6 class="product-title"><a href="shop-product-right.html">Summer Collection New Morden Design</a></h6>
+                                <div class="product-price"><span class="new-price">&#8377;139.00</span><span class="old-price">&#8377;160.99</span></div>
+                            </div>
+                            <div class="deal-bottom">
+                                <p>Hurry Up! Offer End In:</p>
+                                <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"><span class="countdown-section"><span class="countdown-amount hover-up">03</span><span class="countdown-period"> days </span></span><span class="countdown-section"><span class="countdown-amount hover-up">02</span><span class="countdown-period"> hours </span></span><span class="countdown-section"><span class="countdown-amount hover-up">43</span><span class="countdown-period"> mins </span></span><span class="countdown-section"><span class="countdown-amount hover-up">29</span><span class="countdown-period"> sec </span></span></div>
+                                <a href="shop-grid-right.html" class="btn hover-up">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>        
+            </div>
+            </div>
+        </div> --> 
+
+{% endblock top-content %}
+
+<!-- Quick view -->
+{% block main-content %}
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html" rel="nofollow">Home</a>
+                    <span></span> About
+                   
+                </div>
+            </div>
+        </div>
+        <section class="pt-150 pb-150">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 m-auto">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="dashboard-menu">
+                                    <ul class="nav flex-column" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="false"><i class="fi-rs-settings-sliders mr-10"></i>Store</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="orders-tab" data-bs-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Core Values</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="track-orders-tab" data-bs-toggle="tab" href="#track-orders" role="tab" aria-controls="track-orders" aria-selected="false"><i class="fi-rs-shopping-cart-check mr-10"></i>Vision & Mission</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="address-tab" data-bs-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="true"><i class="fi-rs-marker mr-10"></i>Partners Message</a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="tab-content dashboard-content">
+                                    <div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="mb-0">About Us</h5>
+                                            </div>
+                                            <div class="card-body">
+												<div class="row">
+													<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                                <div class="widget-about font-md col-lg-6 col-sm-12">
+          
+            <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
+            <p class="wow fadeIn animated"> <strong>Address: </strong>Lorem ipsum lorem lorem </p>
+            <p class="wow fadeIn animated"> <strong>Phone: </strong>+91 0000 000000 </p>
+            <p class="wow fadeIn animated"> <strong>Hours: </strong>00:00 - 00:00, Mon - Sat </p>
+          </div>
+												       <div class="widget-about font-md col-lg-6 col-sm-12">
+          
+            <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
+														   <p class="wow fadeIn animated"> <strong>Facebook: </strong><a href="https://www.facebook.com" target="_blank">https://www.facebook.com</a> </p>
+            <p class="wow fadeIn animated"> <strong>Instagram: </strong><a href="https://www.instagram.com" target="_blank">https://www.instagram.com</a></p>
+            <p class="wow fadeIn animated"> <strong>Youtube: </strong><a href="https://www.youtube.com/" target="_blank">https://www.youtube.com</a></p>
+          </div>
+													</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="mb-0">Core Values</h5>
+                                            </div>
+                                            <div class="card-body">
+												<img src="assets/imgs/banner/about-banner.jpg">
+                                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="track-orders" role="tabpanel" aria-labelledby="track-orders-tab">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="mb-0">Vision & Mission</h5>
+                                            </div>
+                                              <div class="card-body">
+												<img src="assets/imgs/banner/about-banner.jpg">
+                                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
+                                        <div class="row">
+                                           
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5 class="mb-0">Partners Message</h5>
+                                                    </div>
+                                                     <div class="card-body">
+												<img src="assets/imgs/banner/about-banner.jpg">
+                                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                            </div>
+                                           
+                                            </div>
+                                        
+                                        </div>
+                                 
+                                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock main-content %}

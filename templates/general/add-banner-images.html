@@ -1,0 +1,99 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block main_content %}
+  <section class="content-main">
+            <div class="row">
+                <div class="col-12">
+                    <div class="content-header">
+                        <h2 class="content-title">Add Banner Images</h2>
+                   
+                    </div>
+                </div>
+         
+                <div class="col-lg-12">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Upload Banner Image</h4>
+                        </div>
+                        <form class="ajax reset redirect" enctype="multipart/form-data" method="post">
+                          {% csrf_token %}
+                          <div class="card-body">
+                              <div class="col-lg-6  mb-3">
+                                  <label class="form-label">Title</label>
+                                  <input class="form-control" type="text" placeholder="type here" name="title" id="title" value="{{form.title.value|default:''}}">
+                              </div> <!-- col .// -->
+                              <div class="col-lg-6  mb-3">
+                                  <label class="form-label">Token Id</label>
+                                  <input class="form-control" type="text" placeholder="type here" name="token_id" id="token_id" value="{{form.token_id.value|default:''}}">
+                              </div> <!-- col .// -->
+                              <div class="input-upload col-lg-6  mb-3">
+                                  <img src="{{form.image.value.url|default:''}}" alt="">
+                                  <input class="form-control" type="file" name="image" value="{{form.image.value|default:''}}">
+                              </div>
+                              <div class="form-group col-lg-6  mb-3">
+                                <select class="form-select" name="status">
+                                    {% for value in form.status %}
+                                        <option> {{value}} </option>
+                                    {% endfor %}
+                                </select>
+                                <!-- <input type="text" name="save_as" required="" placeholder="save_as"> -->
+                              </div>
+                              <button class="btn btn-md rounded font-sm hover-up mt-10">Submit</button>
+                          </div>
+                        </form>
+                    </div> <!-- card end// -->
+					
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Existing Banner Images</h4>
+                        </div>
+                        <div class="card-body">
+        <article class="itemlist">
+          <div class="row align-items-center">
+           
+            <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name">
+              <p>IMAGE</p>
+            </div>
+            
+            <div class="col-lg-3 col-sm-3 col-4 col-status"> <span>TOKEN ID</span> </div>
+
+            <div class="col-lg-2 col-sm-2 col-4 col-status"> <span>STATUS</span> </div>
+           
+            <div class="col-lg-3 col-sm-3 col-4 col-action text-end"> </div>
+          </div>
+          <!-- row .// --> 
+        </article>
+        <!-- itemlist  .// -->
+        {% for instance in instances %}
+          <article class="itemlist">
+            <div class="row align-items-center">
+            
+              <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name"> <a class="itemside" href="#">
+                <div class="left"> <img src="{{instance.get_image}}" class="" alt="Item"> </div>
+                <div class="info">
+                  <h6 class="mb-0">{{instance.title|default:""}}</h6>
+                </div>
+                </a> </div>
+              
+                <div class="col-lg-3 col-sm-3 col-4 col-status"> <span class="badge rounded-pill alert-dark">{{instance.token_id}}</span> </div>
+                <div class="col-lg-2 col-sm-2 col-4 col-status"> <span class="badge rounded-pill {% if instance.status == 'active' %}alert-success {% else %} alert-danger {% endif %}">{{instance.status}}</span> </div>
+            
+              <div class="col-lg-3 col-sm-3 col-4 col-action text-end"> 
+                <a href="{% url 'general:banner_images' %}?pk={{instance.pk}}" class="btn btn-sm font-sm rounded btn-brand"> <i class="material-icons md-edit"></i> Edit </a> 
+                <a href="{% url 'general:delete_banner_image' pk=instance.pk %}" class="btn btn-sm font-sm btn-light rounded action-button remove" data-id="{{instance.pk}}" href="{% url 'general:delete_banner_image' pk=instance.pk %}"
+                  data-text="{{confirm_delete_message}}" data-title="Are you sure?"> 
+                  <i class="material-icons md-delete_forever"></i> Delete 
+                </a> 
+              </div>
+            </div>
+            <!-- row .// --> 
+          </article>
+        {% endfor %}
+        <!-- itemlist  .// -->
+      </div>
+      <!-- card-body end// --> 
+                    </div> <!-- card end// -->
+                </div>
+            </div>
+  </section> 
+{% endblock main_content %}      

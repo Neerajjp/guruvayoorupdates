@@ -1,0 +1,99 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% block head %}
+    <style>
+        .otp-section{
+            display: none;
+        }
+        .otp-submit-button{
+            display: none;
+        }
+    </style>
+{% endblock head %}
+{% block top-content %}
+    <!-- Modal -->
+    <!-- <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">              
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>       
+                <div class="modal-body">
+                    <div class="deal" style="background-image: url('assets/imgs/banner/menu-banner-7.png')">
+                        <div class="deal-top">
+                            <h2 class="text-brand">Deal of the Day</h2>
+                            <h5>Limited quantities.</h5>
+                        </div>
+                        <div class="deal-content">
+                            <h6 class="product-title"><a href="shop-product-right.html">Summer Collection New Morden Design</a></h6>
+                            <div class="product-price"><span class="new-price">$139.00</span><span class="old-price">$160.99</span></div>
+                        </div>
+                        <div class="deal-bottom">
+                            <p>Hurry Up! Offer End In:</p>
+                            <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"><span class="countdown-section"><span class="countdown-amount hover-up">03</span><span class="countdown-period"> days </span></span><span class="countdown-section"><span class="countdown-amount hover-up">02</span><span class="countdown-period"> hours </span></span><span class="countdown-section"><span class="countdown-amount hover-up">43</span><span class="countdown-period"> mins </span></span><span class="countdown-section"><span class="countdown-amount hover-up">29</span><span class="countdown-period"> sec </span></span></div>
+                            <a href="shop-grid-right.html" class="btn hover-up">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>        
+        </div>
+        </div>
+    </div> -->
+
+{% endblock top-content %}
+
+<!-- Quick view -->
+{% block main-content %}
+    <main class="main">       
+         <section class="pt-150 pb-150">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 m-auto">
+                        <div class="row">
+                            <div class="col-lg-5 mx-auto text-center">
+                                <div class="login_wrap widget-taber-content p-30 background-white border-radius-10 mb-md-5 mb-lg-0 mb-sm-5">
+                                    <div class="padding_eight_all bg-white">
+										
+                                        <div class="heading_s1">
+                                            <h3 class="mb-30">Sign Up</h3>
+                                        </div>
+                                        <form method="post" class="login-form">
+                                            <div class="form-group">
+                                                <input type="text" required="" name="name" id="name" placeholder="Your Name">
+                                            </div>
+                                            <div class="form-group input-group">
+												<span class="input-group-addon">+91</span>
+                                                <input class="input-group-addons" required="" id="phone" type="tel" name="mobile" placeholder="Mobile">
+                                            </div>
+											<div class="form-group otp-section">
+                                                <input type="text" required="" name="otp" id="otp" placeholder="Enter OTP">
+                                            </div>
+
+                                            <div class="form-group otp-send-button" action-page="register">
+                                                <button type="" class="btn btn-fill-out btn-block hover-up" name="login">SEND OTP</button>
+                                            </div>
+                                            <div class="form-group otp-submit-button" data-action="register">
+                                                <button class="btn btn-fill-out btn-block hover-up" name="login">SUBMIT</button>
+                                            </div>
+											<div class="login_footer form-group">
+                                               <!-- <div class="chek-form">
+                                                    <div class="custome-checkbox">
+                                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="">
+                                                        <label class="form-check-label" for="exampleCheckbox1"><span>Remember me</span></label>
+                                                    </div>
+                                                </div> -->
+                                                <a class="text-center" href="{% url 'web:login' %}">Already have an account ? Please Login</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock main-content %}
+{% block extra-script %}
+{% endblock extra-script %}
+   
